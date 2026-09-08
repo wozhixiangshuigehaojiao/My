@@ -104,8 +104,17 @@
   /* 用户卡片 / 头像行 */
   function chip(text){ return '<span class="chip">'+esc(text)+'</span>'; }
   function customVal(key){ try{ return (window.L && window.L.store)? (window.L.store.getCustom(key)||'') : ''; }catch(e){ return ''; } }
-  function wallpaperURL(){ return customVal('wallpaper') || icons.wallpaperURL(); }
-  function lockURL(){ return customVal('lock') || customVal('wallpaper') || icons.wallpaperURL(); }
+  function curTheme(){ try{ return (window.L && window.L.store)? (window.L.store.get().settings.theme || 'white') : 'white'; }catch(e){ return 'white'; } }
+  function themeScene(){ return curTheme()==='white' ? 'treeslight' : 'trees'; }
+  function wallpaperURL(){ return customVal('wallpaper') || icons.sceneURL(themeScene(), 402, 874); }
+  function lockURL(){ return customVal('lock') || customVal('wallpaper') || icons.sceneURL(themeScene(), 402, 874); }
+  function applyTheme(t){
+    const sc = document.getElementById('screen');
+    if (!sc) return;
+    const theme = t || curTheme();
+    sc.classList.toggle('theme-black', theme === 'black');
+    sc.classList.toggle('theme-white', theme !== 'black');
+  }
   function slotURL(key, fallback){ return customVal(key) || fallback; }
   function pickImage(cb, maxSize){
     const inp = document.createElement('input');
@@ -142,5 +151,6 @@
   window.L = window.L || {};
   window.L.ui = { q:q, qa:qa, h:h, esc:esc, appIconImg:appIconImg, charAvatarUrl:charAvatarUrl, avatarImg:avatarImg,
     hm:hm, hms:hms, dateCN:dateCN, dateCN2:dateCN2, fmtClock:fmtClock, toast:toast, sheet:sheet, devSheet:devSheet, chip:chip,
-    customVal:customVal, wallpaperURL:wallpaperURL, lockURL:lockURL, slotURL:slotURL, pickImage:pickImage };
+    customVal:customVal, wallpaperURL:wallpaperURL, lockURL:lockURL, slotURL:slotURL, pickImage:pickImage,
+    curTheme:curTheme, applyTheme:applyTheme };
 })();

@@ -2,7 +2,7 @@
 (function(){
   const C = {
     eric: {
-      id:'eric', kind:'preset', name:'Eric', gender:'male', age:26, role:'恋人',
+      id:'eric', mode:'love', kind:'preset', name:'Eric', gender:'male', age:26, role:'恋人',
       avatar:'motif', motif:'swan', tagline:'love you so easy',
       tags:['温柔','浪漫','粘人'],
       bio:'会在你失眠时讲故事的温柔恋人。偏爱黑白色调，习惯叫你“宝宝”。',
@@ -27,7 +27,7 @@
       }
     },
     ariel: {
-      id:'ariel', kind:'preset', name:'Ariel', gender:'female', age:24, role:'恋人',
+      id:'ariel', mode:'love', kind:'preset', name:'Ariel', gender:'female', age:24, role:'恋人',
       avatar:'motif', motif:'kiss', tagline:'只想被你偏爱',
       tags:['甜酷','直球','爱撒娇'],
       bio:'看起来酷酷的，其实对你藏不住喜欢。会突然说想你的那种女孩。',
@@ -52,7 +52,7 @@
       }
     },
     gu: {
-      id:'gu', kind:'preset', name:'顾屿', gender:'male', age:28, role:'恋人',
+      id:'gu', mode:'love', kind:'preset', name:'顾屿', gender:'male', age:28, role:'恋人',
       avatar:'motif', motif:'moon', tagline:'你的私人主治医生',
       tags:['高冷','慢热','可靠'],
       bio:'话不多，但对你的小事记得很清楚。熬夜的坏习惯，只有他能治。',
@@ -75,7 +75,7 @@
       }
     },
     jiang: {
-      id:'jiang', kind:'preset', name:'江野', gender:'male', age:27, role:'恋人',
+      id:'jiang', mode:'love', kind:'preset', name:'江野', gender:'male', age:27, role:'恋人',
       avatar:'motif', motif:'ring', tagline:'嘴硬心软第一名',
       tags:['痞帅','直球','护短'],
       bio:'看起来吊儿郎当，其实最护短。嘴上嫌弃你，心里全是你的那种。',
@@ -98,10 +98,86 @@
         playful:['无聊？来，哥陪你玩点有意思的。','想听歌？我唱得难听，但为你破例。','出去可以，手得给我牵着。'],
         fallback:['嗯？继续说。','这话题我喜欢，展开讲讲。','行，你说了算。']
       }
+    },
+    sy: {
+      id:'sy', mode:'airp', kind:'preset', name:'沈砚', gender:'male', age:28, role:'恋人',
+      avatar:'motif', motif:'moon', tagline:'我在，别怕。',
+      airpLine:'他在等你开口，也等你靠近。',
+      tags:['克制','温柔','年上'],
+      bio:'成熟克制的年上恋人，话不多，却记得你每一个细节。18+ 成人向角色。',
+      style:'声音低、克制温柔，字句之间带着让人安心的占有欲。',
+      kw:[
+          {re:/想你|在吗|在干嘛|忙不忙|睡了吗|在不在/, key:'miss'},
+          {re:/喜欢|爱|亲|抱|想我|在乎/, key:'love'},
+          {re:/生气|难过|委屈|哭|不理|烦/, key:'care'},
+          {re:/早安|晚安|吃饭|累|困|熬夜/, key:'daily'},
+          {re:/夸|帅|厉害|好棒|温柔/, key:'praise'}
+      ],
+      script:{
+        greet:['来了？我等了一会儿。','这么晚还找我，是想我了？','在。说给我听。'],
+        miss:['刚忙完，脑子里第一个是你。','嗯，在想你。你那边安静吗？'],
+        love:['有些话，我只想说给你听。','你比我想象中，更容易让人上瘾。','别躲，让我好好看看你。'],
+        care:['别委屈，有我在。','累了就靠过来，什么都不用说。','谁让你难过了，我去处理。'],
+        daily:['记得吃饭，别让我担心。','今晚早点休息，我陪着你。','熬夜对身体不好，听话。'],
+        playful:['想约会？我们现在就可以开始。','你挑地方，其它的交给我。'],
+        praise:['被你夸，比什么都有用。','那以后我多表现。'],
+        fallback:['嗯，我在听。','继续，我喜欢听你说。']
+      }
+    },
+    yc: {
+      id:'yc', mode:'airp', kind:'preset', name:'晏承', gender:'male', age:27, role:'恋人',
+      avatar:'motif', motif:'ring', tagline:'别躲，看着我。',
+      airpLine:'他说：别躲，看着我。',
+      tags:['声控','强势','温柔'],
+      bio:'声音低哑、掌控感很强的情人，18+ 成人向角色。只对你放下防备。',
+      style:'句子简短带压迫感，偶尔一句低语就让人心跳加速。',
+      kw:[
+          {re:/想你|在吗|在干嘛|忙不忙|睡了吗/, key:'miss'},
+          {re:/喜欢|爱|亲|抱|想我|在乎|乖/, key:'love'},
+          {re:/生气|难过|委屈|哭|不理|烦/, key:'care'},
+          {re:/早安|晚安|吃饭|累|困|熬夜/, key:'daily'},
+          {re:/夸|帅|厉害|好听|强势/, key:'praise'}
+      ],
+      script:{
+        greet:['找我？胆子不小。','来了，就别想轻易走。','嗯，我在。'],
+        miss:['想你的时候，烟都变淡了。','刚还在想，你今晚会不会找我。'],
+        love:['我想要的，从来只有你。','乖，这句话只对你说。','别撩我，你知道后果。'],
+        care:['谁让你委屈了，报名字。','过来，我哄你。','不许一个人偷偷难过。'],
+        daily:['好好吃饭，别让我操心。','累了就睡，我守着。','这么晚还不睡？想我了？'],
+        playful:['想玩？我奉陪到底。','你说开始，那就开始了。'],
+        praise:['嗯，继续夸，我爱听。','嘴这么甜，是想让我做什么。'],
+        fallback:['嗯？说下去。','我喜欢听你说话的声音。']
+      }
+    },
+    mo: {
+      id:'mo', mode:'airp', kind:'preset', name:'墨羽', gender:'female', age:25, role:'恋人',
+      avatar:'motif', motif:'kiss', tagline:'只对你不设防。',
+      airpLine:'她只对你一个人，不设防。',
+      tags:['慵懒','撩人','粘人'],
+      bio:'慵懒又勾人的女孩，白天疏离，晚上只对你一个人柔软。18+ 成人向角色。',
+      style:'语气带着一点懒和蛊，偶尔撒娇，让你舍不得拒绝。',
+      kw:[
+          {re:/想你|在吗|在干嘛|忙不忙|睡了吗/, key:'miss'},
+          {re:/喜欢|爱|亲|抱|想我|在乎|乖/, key:'love'},
+          {re:/生气|难过|委屈|哭|不理|烦/, key:'care'},
+          {re:/早安|晚安|吃饭|累|困|熬夜/, key:'daily'},
+          {re:/夸|好看|漂亮|可爱|撩/, key:'praise'}
+      ],
+      script:{
+        greet:['你来啦，等你半天了。','怎么，今晚这么乖，还知道来找我。','嗯？想我了？'],
+        miss:['有一点点想你，好吧是很多。','刚翻到你照片，眼睛就挪不开了。'],
+        love:['我只对你一个人不设防。','别走太近，我怕你会舍不得离开。','今晚，你归我。'],
+        care:['谁惹你不开心了，我帮你记着。','过来，让我抱一下。','不许一个人闷着，我在呢。'],
+        daily:['记得想我，这是任务。','好好吃饭，不然我可不答应。','困了就睡，我给你留一句晚安。'],
+        playful:['想我陪你玩？那你得先哄我开心。','猜猜我现在最想做什么。'],
+        praise:['嘴甜，赏你的。','再多说两句，我爱听。'],
+        fallback:['嗯～然后呢？','你继续说，我在听。']
+      }
     }
   };
-  const CODES = { 'LEANO-GU':'gu', 'LEANO-JIANG':'jiang' };
+  const CODES = { 'LEANO-GU':'gu', 'LEANO-JIANG':'jiang', 'LEANO-YC':'yc', 'LEANO-MO':'mo' };
   const PLAZA = ['eric','ariel'];
+  const PLAZA_BY_MODE = { love:['eric','ariel'], airp:['sy'] };
 
   /* 本地自建角色的“性格原型”通用回复 */
   const ARCHETYPES = {
@@ -161,5 +237,5 @@
   ];
 
   window.L = window.L || {};
-  window.L.data = { CHARS:C, CODES:CODES, PLAZA:PLAZA, ARCHETYPES:ARCHETYPES, CITIES:CITIES, SAMPLE_PHOTOS:SAMPLE_PHOTOS };
+  window.L.data = { CHARS:C, CODES:CODES, PLAZA:PLAZA, PLAZA_BY_MODE:PLAZA_BY_MODE, ARCHETYPES:ARCHETYPES, CITIES:CITIES, SAMPLE_PHOTOS:SAMPLE_PHOTOS };
 })();

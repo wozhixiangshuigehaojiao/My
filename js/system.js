@@ -96,7 +96,7 @@
         '<div class="lock-mid"><div class="lock-hint"><span>上滑进入小手机</span><span class="up">'+icons.inlineHTML('arrowUp',18,'')+'</span></div></div>'+
         '<button class="lock-orb cam-orb"></button></div>';
     const bg = lk.querySelector('.lock-bg');
-    bg.style.backgroundImage = 'url('+ui.lockURL()+')';
+    bg.style.backgroundImage = 'url("'+ui.lockURL()+'")';
     lk.querySelector('.test-orb').innerHTML = icons.inlineHTML('test',24,'');
     lk.querySelector('.cam-orb').innerHTML = icons.inlineHTML('camera',24,'');
     lk.querySelector('.cam-orb').addEventListener('click', ()=> openApp('camera', {}));
@@ -112,7 +112,7 @@
     el('appview').classList.add('hidden');
     el('lock').classList.remove('hidden');
     const lbg = el('lock').querySelector('.lock-bg');
-    if (lbg) lbg.style.backgroundImage = 'url('+ui.lockURL()+')';
+    if (lbg) lbg.style.backgroundImage = 'url("'+ui.lockURL()+'")';
     showStatus(false);
   }
   function unlock(){

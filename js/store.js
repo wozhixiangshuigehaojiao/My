@@ -18,7 +18,8 @@
       recents:[],
       custom:{},
       anniv:null,
-      settings:{ dark:true, sound:true, haptic:true, brightness:1, reduce:false }
+      airpOk:false,
+      settings:{ theme:'white', mode:'love', dark:true, sound:true, haptic:true, brightness:1, reduce:false }
     };
   }
   let state = null;
@@ -30,8 +31,8 @@
     if (raw) {
       try {
         const j = JSON.parse(raw);
-        Object.keys(d).forEach(k=>{ if (j[k] !== undefined) d[k] = j[k]; });
-        if (j.settings) Object.assign(d.settings, j.settings);
+        Object.keys(d).forEach(k=>{ if (k !== 'settings' && j[k] !== undefined) d[k] = j[k]; });
+        d.settings = Object.assign({}, d.settings, j.settings || {});
       } catch(e){}
     }
     state = d;
@@ -61,6 +62,9 @@
     s.created.slice().reverse().forEach(c=>list.push(c));
     return list;
   }
+  function modeNow(){ return (state.settings && state.settings.mode) || 'love'; }
+  function inMode(ch){ if (!ch) return false; const m = ch.mode; if (!m || m === 'both') return true; return m === modeNow(); }
+  function myCharsMode(){ return myChars().filter(inMode); }
   function ensureChat(id){
     if (!state.chats[id]) state.chats[id] = [];
   }
@@ -137,7 +141,7 @@
   }
 
   window.L = window.L || {};
-  window.L.store = { load:load, save:save, get:get, charById:charById, isOwned:isOwned, myChars:myChars,
+  window.L.store = { load:load, save:save, get:get, charById:charById, isOwned:isOwned, myChars:myChars, modeNow:modeNow, inMode:inMode, myCharsMode:myCharsMode,
     addChar:addChar, addCreatedChar:addCreatedChar, removeChar:removeChar, chatOf:chatOf, pushMsg:pushMsg,
     unreadOf:unreadOf, clearUnread:clearUnread, totalUnread:totalUnread, lastMsg:lastMsg,
     addPhoto:addPhoto, logCall:logCall, daysTogether:daysTogether, toggleSetting:toggleSetting,
@@ -146,6 +150,10 @@
     setCustom:function(k,v){ state.custom = state.custom||{}; state.custom[k]=v; save(); },
     getCustom:function(k){ return (state.custom||{})[k]; },
     resetCustom:function(k){ if(state.custom){ delete state.custom[k]; save(); } },
-    resetAllCustom:function(){ state.custom={}; save(); }
+    resetAllCustom:function(){ state.custom={}; save(); },
+    setTheme:function(t){ state.settings.theme = (t==='black'?'black':'white'); save(); return state.settings.theme; },
+    setMode:function(m){ state.settings.mode = (m==='airp'?'airp':'love'); save(); return state.settings.mode; },
+    setAirpOk:function(v){ state.airpOk = !!v; save(); },
+    get airpOk(){ return state.airpOk; }
   };
 })();

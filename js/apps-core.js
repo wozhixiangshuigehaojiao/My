@@ -41,7 +41,7 @@
     showList(el);
   }
   function sortedChats(){
-    const chars = window.L.store.myChars();
+    const chars = window.L.store.myCharsMode();
     return chars.slice().sort((a,b)=>{
       const la = window.L.store.lastMsg(a.id), lb = window.L.store.lastMsg(b.id);
       return (lb?lb.ts:0)-(la?la.ts:0);
@@ -53,7 +53,7 @@
     el._body = body;
     body.innerHTML='';
     const head = el.querySelector('.app-head');
-    if (head){ head.innerHTML = '<div class="ah-t">微信 · Leano</div><div class="ah-side" style="margin-left:auto"></div>'; const hs = head.querySelector('.ah-side'); hs.innerHTML = icons.inlineHTML('plus', 18, 'ah-btn'); hs.firstElementChild.addEventListener('click', ()=> showHub(el, 'plaza')); }
+    if (head){ const listTitle = window.L.store.modeNow()==='airp' ? 'airp · 对话' : '微信 · Leano'; head.innerHTML = '<div class="ah-t">'+listTitle+'</div><div class="ah-side" style="margin-left:auto"></div>'; const hs = head.querySelector('.ah-side'); hs.innerHTML = icons.inlineHTML('plus', 18, 'ah-btn'); hs.firstElementChild.addEventListener('click', ()=> showHub(el, 'plaza')); }
     if (!el.querySelector('.bg-img')){
       const b1 = document.createElement('div'); b1.className='bg-img'; b1.style.backgroundImage='url('+ui.wallpaperURL()+')';
       const b2 = ui.h('<div class="bg-shade"></div>');
@@ -95,12 +95,23 @@
     window.L.store.clearUnread(charId);
     const body = el._body;
     body.innerHTML='';
-    const conv = ui.h('<div class="conv"><div class="conv-msgs"></div><div class="conv-bar"></div></div>');
+    const conv = ui.h('<div class="conv"><div class="airp-status" style="display:none"></div><div class="conv-msgs"></div><div class="conv-bar"></div></div>');
     body.appendChild(conv);
     // 若历史为空，先给一句开场白
     const arr = window.L.store.chatOf(charId);
     if (!arr.length){ window.L.store.pushMsg(charId,'char', window.L.engine.greeting(ch)); }
     const msgs = conv.querySelector('.conv-msgs');
+    const airpMode = window.L.store.modeNow() === 'airp';
+    const statusEl = conv.querySelector('.airp-status');
+    if (airpMode && statusEl){
+      const av = document.createElement('div'); av.className='as-av'; av.appendChild(ui.avatarImg(ch, 40));
+      const mid = ui.h('<div class="as-mid"><div class="as-name"></div><div class="as-line"></div></div>');
+      mid.querySelector('.as-name').textContent = ch.name;
+      mid.querySelector('.as-line').textContent = ch.airpLine || '空气里都是你。';
+      const tag = ui.h('<div class="as-tag">airp · 18+</div>');
+      statusEl.appendChild(av); statusEl.appendChild(mid); statusEl.appendChild(tag);
+      statusEl.style.display = 'flex';
+    }
     function render(){
       msgs.innerHTML='';
       const list = window.L.store.chatOf(charId);
@@ -120,6 +131,11 @@
     const input = ui.h('<input type="text" placeholder="发消息…" maxlength="500">');
     const callb = ui.h('<button class="callb" title="通话">'+icons.inlineHTML('phone',16,'')+'</button>');
     const send = ui.h('<button class="send" title="发送">'+icons.inlineHTML('send',16,'')+'</button>');
+    if (window.L.store.modeNow()==='airp'){
+      const vb = ui.h('<button class="callb voiceb" title="语音">'+icons.inlineHTML('mic',16,'')+'</button>');
+      vb.addEventListener('click', ()=> ui.toast('AI 语音将在二期接入'));
+      bar.appendChild(vb);
+    }
     bar.appendChild(input); bar.appendChild(callb); bar.appendChild(send);
     input.focus && input.focus();
     function sendMsg(){
@@ -197,7 +213,7 @@
     pbody.appendChild(box);
   }
   function drawContacts(pbody){
-    const chars = window.L.store.myChars();
+    const chars = window.L.store.myCharsMode();
     const box = ui.h('<div class="recents"></div>');
     if (!chars.length){
       box.appendChild(ui.h('<div class="chat-empty"><div class="ce-ic">'+icons.inlineHTML('user',30,'')+'</div><div>还没有联系人，去角色广场添加</div></div>'));
@@ -251,7 +267,7 @@
     const overlay = ui.h('<div class="call-screen"></div>');
     const avatar = opts.avatar;
     const bg = document.createElement('div'); bg.className='cs-bg';
-    bg.style.backgroundImage = 'url('+ (avatar? ui.charAvatarUrl(avatar) : ui.wallpaperURL()) +')';
+    bg.style.backgroundImage = 'url("'+ (avatar? ui.charAvatarUrl(avatar) : ui.wallpaperURL()) +'")';
     overlay.appendChild(bg); overlay.appendChild(ui.h('<div class="cs-shade"></div>'));
     const inr = ui.h('<div class="cs-in"><div class="cs-state">正在连接…</div><div class="cs-av"></div><div class="cs-name"></div><div class="cs-sub"></div></div>');
     overlay.appendChild(inr);

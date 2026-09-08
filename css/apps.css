@@ -222,3 +222,12 @@
 .ci-tile span{font-size:9.5px;color:rgba(255,255,255,.6);max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
 .ci-tile:active{opacity:.7;}
 .ci-dot{position:absolute;top:-2px;right:4px;width:10px;height:10px;border-radius:50%;background:#4cd964;border:1px solid #000;}
+
+/* airp 状态卡 */
+.airp-status{display:flex; align-items:center; gap:10px; margin:8px 12px 2px; padding:9px 12px; background:linear-gradient(155deg, rgba(255,255,255,.18), rgba(255,255,255,.05)); border:1px solid rgba(255,255,255,.25); backdrop-filter:blur(18px); -webkit-backdrop-filter:blur(18px); border-radius:18px; flex:none;}
+.as-av{width:40px;height:40px;border-radius:50%;overflow:hidden;flex:none;}
+.as-av img{width:100%;height:100%;}
+.as-mid{flex:1;min-width:0;}
+.as-name{color:#fff;font-size:13.5px;font-weight:700;letter-spacing:.3px;}
+.as-line{color:rgba(255,255,255,.65);font-size:11.5px;margin-top:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.as-tag{font-size:9px;background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.2); border-radius:999px; padding:3px 8px; color:#fff; letter-spacing:1px; flex:none;}

@@ -3,6 +3,7 @@
   if ('serviceWorker' in navigator && /^https?:$/.test(location.protocol)){
     navigator.serviceWorker.register('sw.js').catch(function(){});
   }
+  window.L.ui.applyTheme();
   window.L.home.build();
   window.L.system.init();
   window.L.system.boot();

@@ -1,0 +1,148 @@
+
+/* ============ v1.3 白色主题覆盖（默认白） ============ */
+.theme-white .statusbar{ color:#171717; }
+.theme-white .sb-right img{ filter:invert(1); }
+.theme-white .homeindicator .hi-bar{ background:rgba(0,0,0,.8); box-shadow:none; }
+.theme-white .dots i{ background:rgba(0,0,0,.28); }
+.theme-white .dots i.on{ background:#000; }
+
+/* 锁屏 */
+.theme-white .lock-bg{ filter:none; }
+.theme-white .lock-shade{ background:linear-gradient(180deg, rgba(255,255,255,.25) 0%, rgba(255,255,255,0) 35%, rgba(255,255,255,0) 58%, rgba(255,255,255,.6) 100%); }
+.theme-white .lock-date{ color:rgba(0,0,0,.85); text-shadow:none; }
+.theme-white .lock-time{ color:#191919; text-shadow:none; }
+.theme-white .lock-hint{ color:rgba(0,0,0,.85); text-shadow:none; }
+.theme-white .lock-hint .up{ color:#171717; }
+.theme-white .lock-orb{ border-color:rgba(0,0,0,.28); color:#171717; box-shadow:0 8px 20px rgba(0,0,0,.14), inset 0 1px 0 rgba(255,255,255,.95); }
+
+/* 主屏 */
+.theme-white .home-bg{ filter:none !important; }
+.theme-white .home-shade{ background:linear-gradient(180deg, rgba(255,255,255,.3) 0%, rgba(255,255,255,0) 34%, rgba(255,255,255,0) 60%, rgba(255,255,255,.55) 100%); }
+.theme-white .app-cell .lb{ color:#1d1d1d; text-shadow:none; }
+.theme-white .widget-time, .theme-white .w-mini, .theme-white .w-photo{ background:linear-gradient(155deg, rgba(255,255,255,.85), rgba(255,255,255,.45)); border-color:rgba(0,0,0,.18); box-shadow:0 10px 24px rgba(0,0,0,.12), inset 0 1px 0 rgba(255,255,255,.95); }
+.theme-white .widget-time .wt-date, .theme-white .widget-time .wt-time, .theme-white .widget-time .wt-sub{ color:#1c1c1c; text-shadow:none; }
+.theme-white .w-mini{ color:#1c1c1c; }
+.theme-white .w-mini .wm-t{ color:#1b1b1b; }
+.theme-white .w-mini .wm-s{ color:rgba(0,0,0,.5); }
+.theme-white .couple-card, .theme-white .lover-card{ background:linear-gradient(155deg, rgba(255,255,255,.82), rgba(255,255,255,.4)); border-color:rgba(0,0,0,.2); box-shadow:0 10px 26px rgba(0,0,0,.13), inset 0 1px 0 rgba(255,255,255,.95); color:#1a1a1a; }
+.theme-white .couple-names, .theme-white .lover-card .nm{ color:#171717; }
+.theme-white .couple-sub, .theme-white .lover-card .tg{ color:rgba(0,0,0,.55); }
+.theme-white .couple-days{ background:rgba(0,0,0,.08); color:#171717; }
+.theme-white .couple-avs .heart{ background:#151515; color:#fff; }
+.theme-white .love-btn{ background:#151515; color:#fff; }
+.theme-white .lover-card .arr{ color:#000; }
+.theme-white .dock-in{ background:rgba(255,255,255,.65); border:1px solid rgba(0,0,0,.16); }
+.theme-white .w-photo-tag{ background:rgba(255,255,255,.55); border-color:rgba(0,0,0,.2); color:#222; }
+
+/* 通用 App 表面 */
+.theme-white .app{ background:#f1efe9; color:#151515; }
+.theme-white .app-head .ah-t{ color:#151515; }
+.theme-white .app-head .ah-btn{ background:rgba(0,0,0,.07); color:#151515; }
+.theme-white .bg-shade{ background:linear-gradient(180deg, rgba(255,255,255,.55) 0%, rgba(255,255,255,.12) 45%, rgba(255,255,255,.6) 100%); }
+.theme-white .camera-app, .theme-white .camera-app .app-head .ah-t, .theme-white .camera-app .app-head .ah-btn,
+.theme-white .calc-app, .theme-white .calc-app .app-head .ah-t, .theme-white .calc-app .app-head .ah-btn{ color:#fff; }
+.theme-white .camera-app .app-head .ah-btn, .theme-white .calc-app .app-head .ah-btn{ background:rgba(255,255,255,.16); }
+
+/* 聊天 */
+.theme-white .chat-card{ border-color:rgba(0,0,0,.08); }
+.theme-white .chat-card .cc-name{ color:#161616; }
+.theme-white .chat-card .cc-last{ color:rgba(0,0,0,.55); }
+.theme-white .chat-card .cc-time{ color:rgba(0,0,0,.4); }
+.theme-white .cc-bdg{ background:#171717; color:#fff; }
+.theme-white .chat-empty .ce-ic{ background:rgba(0,0,0,.06); }
+.theme-white .chat-empty{ color:rgba(0,0,0,.5); }
+.theme-white .msg.them .m-bub{ background:rgba(0,0,0,.07); border:1px solid rgba(0,0,0,.09); color:#191919; }
+.theme-white .msg.me .m-bub{ background:#1a1a1a; color:#fff; }
+.theme-white .msg .m-time{ color:rgba(0,0,0,.4); }
+.theme-white .typing .bub{ background:rgba(0,0,0,.08); }
+.theme-white .typing i{ background:rgba(0,0,0,.6); }
+.theme-white .conv-bar{ background:linear-gradient(180deg, rgba(241,239,233,0), rgba(241,239,233,.9)); }
+.theme-white .conv-bar input{ background:rgba(0,0,0,.06); border-color:rgba(0,0,0,.12); color:#161616; }
+.theme-white .conv-bar input::placeholder{ color:rgba(0,0,0,.35); }
+.theme-white .conv-bar .send{ background:#1a1a1a; color:#fff; }
+.theme-white .conv-bar .callb{ background:rgba(0,0,0,.09); color:#161616; }
+
+/* 角色中心 */
+.theme-white .hub-tabs button{ background:rgba(0,0,0,.05); color:rgba(0,0,0,.6); }
+.theme-white .hub-tabs button.on{ background:#1a1a1a; color:#fff; }
+.theme-white .char-card{ background:rgba(255,255,255,.72); border-color:rgba(0,0,0,.12); }
+.theme-white .char-card .ch-name{ color:#171717; }
+.theme-white .char-card .ch-tag{ color:rgba(0,0,0,.45); }
+.theme-white .char-card .ch-bio{ color:rgba(0,0,0,.62); }
+.theme-white .chip{ background:rgba(0,0,0,.08); color:rgba(0,0,0,.72); }
+.theme-white .lock-badge{ background:rgba(0,0,0,.08); color:rgba(0,0,0,.6); }
+.theme-white .key-box{ background:rgba(0,0,0,.03); border-color:rgba(0,0,0,.22); }
+.theme-white .key-box .kb-t{ color:rgba(0,0,0,.6); }
+.theme-white .field .fl{ color:rgba(0,0,0,.6); }
+.theme-white .field .fl b{ color:#171717; }
+.theme-white .tagpick button{ background:rgba(0,0,0,.05); border-color:rgba(0,0,0,.18); color:rgba(0,0,0,.7); }
+.theme-white .tagpick button.on{ background:#1a1a1a; color:#fff; border-color:#1a1a1a; }
+
+/* 输入与按钮 */
+.theme-white .le-input{ background:rgba(255,255,255,.8); border-color:rgba(0,0,0,.2); color:#171717; }
+.theme-white .le-input::placeholder{ color:rgba(0,0,0,.35); }
+.theme-white .le-btn.ghost{ background:rgba(0,0,0,.06); color:#171717; border-color:rgba(0,0,0,.2); }
+.theme-white .le-btn.danger{ background:rgba(0,0,0,.05); }
+
+/* 设置 */
+.theme-white .set-group{ background:rgba(255,255,255,.7); border-color:rgba(0,0,0,.12); }
+.theme-white .set-row{ border-color:rgba(0,0,0,.07); }
+.theme-white .set-row .sr-l{ color:#161616; }
+.theme-white .set-row .sr-s, .theme-white .set-row .sr-v{ color:rgba(0,0,0,.5); }
+.theme-white .set-row .sr-ic{ background:rgba(0,0,0,.07); }
+.theme-white .set-row .sr-arr{ color:rgba(0,0,0,.4); }
+.theme-white .switch{ background:rgba(0,0,0,.22); }
+.theme-white .set-foot{ color:rgba(0,0,0,.35); }
+
+/* 时钟 */
+.theme-white .seg button{ color:rgba(0,0,0,.6); }
+.theme-white .world-row{ border-color:rgba(0,0,0,.08); }
+.theme-white .world-row .wr-city{ color:#171717; }
+.theme-white .world-row .wr-diff{ color:rgba(0,0,0,.5); }
+.theme-white .world-row .wr-time{ color:#151515; }
+.theme-white .sw-time{ color:#151515; }
+.theme-white .sw-lap{ color:rgba(0,0,0,.6); border-color:rgba(0,0,0,.06); }
+.theme-white .timer-disp{ color:#151515; }
+.theme-white .timer-wheel .tw-n{ color:#171717; background:rgba(0,0,0,.06); border-color:rgba(0,0,0,.12); }
+
+/* 照片/相册 */
+.theme-white .photos-grid .ph-cell{ background:#e2e0d9; }
+
+/* 电话 */
+.theme-white .rec-row .rr-n{ color:#171717; }
+.theme-white .rec-row .rr-s{ color:rgba(0,0,0,.5); }
+.theme-white .rec-row .rr-ic{ color:rgba(0,0,0,.5); }
+.theme-white .dial-key{ background:rgba(0,0,0,.06); border-color:rgba(0,0,0,.1); color:#171717; }
+.theme-white .dial-key .dk-l{ color:rgba(0,0,0,.5); }
+.theme-white .dial-num{ color:#171717; }
+.theme-white .dial-ops button{ color:#171717; }
+.theme-white .phone-body .chat-empty{ color:rgba(0,0,0,.5); }
+
+/* 弹层与提示 */
+.theme-white .toast{ background:rgba(244,242,236,.95); color:#151515; border-color:rgba(0,0,0,.18); box-shadow:0 10px 30px rgba(0,0,0,.2); }
+.theme-white .sheet{ background:rgba(0,0,0,.18); }
+.theme-white .sheet .sh-card{ background:#f4f2ec; color:#151515; }
+.theme-white .sheet .sh-title{ color:#171717; }
+.theme-white .sheet .sh-body{ color:rgba(0,0,0,.82); }
+.theme-white .sheet .sh-grip{ background:rgba(0,0,0,.22); }
+.theme-white .sh-btn{ background:#1a1a1a; color:#fff; }
+.theme-white .sh-btn.danger{ background:rgba(0,0,0,.06); color:#b3261e; }
+
+/* 自定义图片面板（随白主题） */
+.theme-white .ci-row{ border-color:rgba(0,0,0,.08); }
+.theme-white .ci-lb{ color:#171717; }
+.theme-white .ci-st{ color:rgba(0,0,0,.5); }
+.theme-white .ci-btn.set{ background:rgba(0,0,0,.08); color:#171717; border-color:rgba(0,0,0,.2); }
+.theme-white .ci-tile span{ color:rgba(0,0,0,.55); }
+
+/* 黑色主题补强（确保文字为白） */
+.theme-black .w-mini{ color:#fff; }
+.theme-black .msg .m-time{ color:rgba(255,255,255,.35); }
+/* airp 状态卡 · 白主题 */
+.theme-white .airp-status{ background:linear-gradient(155deg, rgba(255,255,255,.92), rgba(255,255,255,.5)); border-color:rgba(0,0,0,.16); box-shadow:0 6px 18px rgba(0,0,0,.08); }
+.theme-white .as-name{ color:#171717; }
+.theme-white .as-line{ color:rgba(0,0,0,.55); }
+.theme-white .as-tag{ background:rgba(0,0,0,.1); border-color:rgba(0,0,0,.15); color:#171717; }
+
+/* 相机/计算器始终深色（与 iOS 一致），白主题下也不变浅 */
+.theme-white .camera-app, .theme-white .calc-app{ background:#000 !important; }

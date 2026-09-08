@@ -78,6 +78,7 @@
     const cc = buildCoupleCard();
     page.appendChild(cc);
     page._couple = cc;
+    if (window.L.store.modeNow()==='airp') cc.style.display='none';
     addRow(page, [
       {icon:'worldbook', label:'世界书', act:'dev'},
       {icon:'phone', label:'电话', act:'phone'},
@@ -118,6 +119,7 @@
     top.appendChild(mini);
     const lc = buildLoverCard();
     top.appendChild(lc);
+    if (window.L.store.modeNow()==='airp') lc.style.display='none';
     page.appendChild(top);
     page._lover = lc;
     const coll = ui.h('<div class="collage"></div>');
@@ -163,8 +165,8 @@
     const home = ui.q('#home');
     home.innerHTML='';
     const bg = document.createElement('div'); bg.className='home-bg';
-    bg.style.backgroundImage = 'url('+ui.wallpaperURL()+')';
-    bg.style.filter = ui.customVal('wallpaper') ? 'brightness(.9) contrast(1.02)' : 'brightness(.78) saturate(.3)';
+    bg.style.backgroundImage = 'url("'+ui.wallpaperURL()+'")';
+    bg.style.filter = ui.customVal('wallpaper') ? 'brightness(.9) contrast(1.02)' : (ui.curTheme()==='white' ? 'none' : 'brightness(.78) saturate(.3)');
     home.appendChild(bg);
     home.appendChild(ui.h('<div class="home-shade"></div>'));
     const pagesWrap = ui.h('<div class="home-pages"><div class="home-track"></div></div>');

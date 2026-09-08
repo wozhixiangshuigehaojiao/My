@@ -466,6 +466,166 @@ html, body { overscroll-behavior:none; }
 .ci-tile:active{opacity:.7;}
 .ci-dot{position:absolute;top:-2px;right:4px;width:10px;height:10px;border-radius:50%;background:#4cd964;border:1px solid #000;}
 
+/* airp 状态卡 */
+.airp-status{display:flex; align-items:center; gap:10px; margin:8px 12px 2px; padding:9px 12px; background:linear-gradient(155deg, rgba(255,255,255,.18), rgba(255,255,255,.05)); border:1px solid rgba(255,255,255,.25); backdrop-filter:blur(18px); -webkit-backdrop-filter:blur(18px); border-radius:18px; flex:none;}
+.as-av{width:40px;height:40px;border-radius:50%;overflow:hidden;flex:none;}
+.as-av img{width:100%;height:100%;}
+.as-mid{flex:1;min-width:0;}
+.as-name{color:#fff;font-size:13.5px;font-weight:700;letter-spacing:.3px;}
+.as-line{color:rgba(255,255,255,.65);font-size:11.5px;margin-top:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.as-tag{font-size:9px;background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.2); border-radius:999px; padding:3px 8px; color:#fff; letter-spacing:1px; flex:none;}
+
+</style>
+<style>
+
+/* ============ v1.3 白色主题覆盖（默认白） ============ */
+.theme-white .statusbar{ color:#171717; }
+.theme-white .sb-right img{ filter:invert(1); }
+.theme-white .homeindicator .hi-bar{ background:rgba(0,0,0,.8); box-shadow:none; }
+.theme-white .dots i{ background:rgba(0,0,0,.28); }
+.theme-white .dots i.on{ background:#000; }
+
+/* 锁屏 */
+.theme-white .lock-bg{ filter:none; }
+.theme-white .lock-shade{ background:linear-gradient(180deg, rgba(255,255,255,.25) 0%, rgba(255,255,255,0) 35%, rgba(255,255,255,0) 58%, rgba(255,255,255,.6) 100%); }
+.theme-white .lock-date{ color:rgba(0,0,0,.85); text-shadow:none; }
+.theme-white .lock-time{ color:#191919; text-shadow:none; }
+.theme-white .lock-hint{ color:rgba(0,0,0,.85); text-shadow:none; }
+.theme-white .lock-hint .up{ color:#171717; }
+.theme-white .lock-orb{ border-color:rgba(0,0,0,.28); color:#171717; box-shadow:0 8px 20px rgba(0,0,0,.14), inset 0 1px 0 rgba(255,255,255,.95); }
+
+/* 主屏 */
+.theme-white .home-bg{ filter:none !important; }
+.theme-white .home-shade{ background:linear-gradient(180deg, rgba(255,255,255,.3) 0%, rgba(255,255,255,0) 34%, rgba(255,255,255,0) 60%, rgba(255,255,255,.55) 100%); }
+.theme-white .app-cell .lb{ color:#1d1d1d; text-shadow:none; }
+.theme-white .widget-time, .theme-white .w-mini, .theme-white .w-photo{ background:linear-gradient(155deg, rgba(255,255,255,.85), rgba(255,255,255,.45)); border-color:rgba(0,0,0,.18); box-shadow:0 10px 24px rgba(0,0,0,.12), inset 0 1px 0 rgba(255,255,255,.95); }
+.theme-white .widget-time .wt-date, .theme-white .widget-time .wt-time, .theme-white .widget-time .wt-sub{ color:#1c1c1c; text-shadow:none; }
+.theme-white .w-mini{ color:#1c1c1c; }
+.theme-white .w-mini .wm-t{ color:#1b1b1b; }
+.theme-white .w-mini .wm-s{ color:rgba(0,0,0,.5); }
+.theme-white .couple-card, .theme-white .lover-card{ background:linear-gradient(155deg, rgba(255,255,255,.82), rgba(255,255,255,.4)); border-color:rgba(0,0,0,.2); box-shadow:0 10px 26px rgba(0,0,0,.13), inset 0 1px 0 rgba(255,255,255,.95); color:#1a1a1a; }
+.theme-white .couple-names, .theme-white .lover-card .nm{ color:#171717; }
+.theme-white .couple-sub, .theme-white .lover-card .tg{ color:rgba(0,0,0,.55); }
+.theme-white .couple-days{ background:rgba(0,0,0,.08); color:#171717; }
+.theme-white .couple-avs .heart{ background:#151515; color:#fff; }
+.theme-white .love-btn{ background:#151515; color:#fff; }
+.theme-white .lover-card .arr{ color:#000; }
+.theme-white .dock-in{ background:rgba(255,255,255,.65); border:1px solid rgba(0,0,0,.16); }
+.theme-white .w-photo-tag{ background:rgba(255,255,255,.55); border-color:rgba(0,0,0,.2); color:#222; }
+
+/* 通用 App 表面 */
+.theme-white .app{ background:#f1efe9; color:#151515; }
+.theme-white .app-head .ah-t{ color:#151515; }
+.theme-white .app-head .ah-btn{ background:rgba(0,0,0,.07); color:#151515; }
+.theme-white .bg-shade{ background:linear-gradient(180deg, rgba(255,255,255,.55) 0%, rgba(255,255,255,.12) 45%, rgba(255,255,255,.6) 100%); }
+.theme-white .camera-app, .theme-white .camera-app .app-head .ah-t, .theme-white .camera-app .app-head .ah-btn,
+.theme-white .calc-app, .theme-white .calc-app .app-head .ah-t, .theme-white .calc-app .app-head .ah-btn{ color:#fff; }
+.theme-white .camera-app .app-head .ah-btn, .theme-white .calc-app .app-head .ah-btn{ background:rgba(255,255,255,.16); }
+
+/* 聊天 */
+.theme-white .chat-card{ border-color:rgba(0,0,0,.08); }
+.theme-white .chat-card .cc-name{ color:#161616; }
+.theme-white .chat-card .cc-last{ color:rgba(0,0,0,.55); }
+.theme-white .chat-card .cc-time{ color:rgba(0,0,0,.4); }
+.theme-white .cc-bdg{ background:#171717; color:#fff; }
+.theme-white .chat-empty .ce-ic{ background:rgba(0,0,0,.06); }
+.theme-white .chat-empty{ color:rgba(0,0,0,.5); }
+.theme-white .msg.them .m-bub{ background:rgba(0,0,0,.07); border:1px solid rgba(0,0,0,.09); color:#191919; }
+.theme-white .msg.me .m-bub{ background:#1a1a1a; color:#fff; }
+.theme-white .msg .m-time{ color:rgba(0,0,0,.4); }
+.theme-white .typing .bub{ background:rgba(0,0,0,.08); }
+.theme-white .typing i{ background:rgba(0,0,0,.6); }
+.theme-white .conv-bar{ background:linear-gradient(180deg, rgba(241,239,233,0), rgba(241,239,233,.9)); }
+.theme-white .conv-bar input{ background:rgba(0,0,0,.06); border-color:rgba(0,0,0,.12); color:#161616; }
+.theme-white .conv-bar input::placeholder{ color:rgba(0,0,0,.35); }
+.theme-white .conv-bar .send{ background:#1a1a1a; color:#fff; }
+.theme-white .conv-bar .callb{ background:rgba(0,0,0,.09); color:#161616; }
+
+/* 角色中心 */
+.theme-white .hub-tabs button{ background:rgba(0,0,0,.05); color:rgba(0,0,0,.6); }
+.theme-white .hub-tabs button.on{ background:#1a1a1a; color:#fff; }
+.theme-white .char-card{ background:rgba(255,255,255,.72); border-color:rgba(0,0,0,.12); }
+.theme-white .char-card .ch-name{ color:#171717; }
+.theme-white .char-card .ch-tag{ color:rgba(0,0,0,.45); }
+.theme-white .char-card .ch-bio{ color:rgba(0,0,0,.62); }
+.theme-white .chip{ background:rgba(0,0,0,.08); color:rgba(0,0,0,.72); }
+.theme-white .lock-badge{ background:rgba(0,0,0,.08); color:rgba(0,0,0,.6); }
+.theme-white .key-box{ background:rgba(0,0,0,.03); border-color:rgba(0,0,0,.22); }
+.theme-white .key-box .kb-t{ color:rgba(0,0,0,.6); }
+.theme-white .field .fl{ color:rgba(0,0,0,.6); }
+.theme-white .field .fl b{ color:#171717; }
+.theme-white .tagpick button{ background:rgba(0,0,0,.05); border-color:rgba(0,0,0,.18); color:rgba(0,0,0,.7); }
+.theme-white .tagpick button.on{ background:#1a1a1a; color:#fff; border-color:#1a1a1a; }
+
+/* 输入与按钮 */
+.theme-white .le-input{ background:rgba(255,255,255,.8); border-color:rgba(0,0,0,.2); color:#171717; }
+.theme-white .le-input::placeholder{ color:rgba(0,0,0,.35); }
+.theme-white .le-btn.ghost{ background:rgba(0,0,0,.06); color:#171717; border-color:rgba(0,0,0,.2); }
+.theme-white .le-btn.danger{ background:rgba(0,0,0,.05); }
+
+/* 设置 */
+.theme-white .set-group{ background:rgba(255,255,255,.7); border-color:rgba(0,0,0,.12); }
+.theme-white .set-row{ border-color:rgba(0,0,0,.07); }
+.theme-white .set-row .sr-l{ color:#161616; }
+.theme-white .set-row .sr-s, .theme-white .set-row .sr-v{ color:rgba(0,0,0,.5); }
+.theme-white .set-row .sr-ic{ background:rgba(0,0,0,.07); }
+.theme-white .set-row .sr-arr{ color:rgba(0,0,0,.4); }
+.theme-white .switch{ background:rgba(0,0,0,.22); }
+.theme-white .set-foot{ color:rgba(0,0,0,.35); }
+
+/* 时钟 */
+.theme-white .seg button{ color:rgba(0,0,0,.6); }
+.theme-white .world-row{ border-color:rgba(0,0,0,.08); }
+.theme-white .world-row .wr-city{ color:#171717; }
+.theme-white .world-row .wr-diff{ color:rgba(0,0,0,.5); }
+.theme-white .world-row .wr-time{ color:#151515; }
+.theme-white .sw-time{ color:#151515; }
+.theme-white .sw-lap{ color:rgba(0,0,0,.6); border-color:rgba(0,0,0,.06); }
+.theme-white .timer-disp{ color:#151515; }
+.theme-white .timer-wheel .tw-n{ color:#171717; background:rgba(0,0,0,.06); border-color:rgba(0,0,0,.12); }
+
+/* 照片/相册 */
+.theme-white .photos-grid .ph-cell{ background:#e2e0d9; }
+
+/* 电话 */
+.theme-white .rec-row .rr-n{ color:#171717; }
+.theme-white .rec-row .rr-s{ color:rgba(0,0,0,.5); }
+.theme-white .rec-row .rr-ic{ color:rgba(0,0,0,.5); }
+.theme-white .dial-key{ background:rgba(0,0,0,.06); border-color:rgba(0,0,0,.1); color:#171717; }
+.theme-white .dial-key .dk-l{ color:rgba(0,0,0,.5); }
+.theme-white .dial-num{ color:#171717; }
+.theme-white .dial-ops button{ color:#171717; }
+.theme-white .phone-body .chat-empty{ color:rgba(0,0,0,.5); }
+
+/* 弹层与提示 */
+.theme-white .toast{ background:rgba(244,242,236,.95); color:#151515; border-color:rgba(0,0,0,.18); box-shadow:0 10px 30px rgba(0,0,0,.2); }
+.theme-white .sheet{ background:rgba(0,0,0,.18); }
+.theme-white .sheet .sh-card{ background:#f4f2ec; color:#151515; }
+.theme-white .sheet .sh-title{ color:#171717; }
+.theme-white .sheet .sh-body{ color:rgba(0,0,0,.82); }
+.theme-white .sheet .sh-grip{ background:rgba(0,0,0,.22); }
+.theme-white .sh-btn{ background:#1a1a1a; color:#fff; }
+.theme-white .sh-btn.danger{ background:rgba(0,0,0,.06); color:#b3261e; }
+
+/* 自定义图片面板（随白主题） */
+.theme-white .ci-row{ border-color:rgba(0,0,0,.08); }
+.theme-white .ci-lb{ color:#171717; }
+.theme-white .ci-st{ color:rgba(0,0,0,.5); }
+.theme-white .ci-btn.set{ background:rgba(0,0,0,.08); color:#171717; border-color:rgba(0,0,0,.2); }
+.theme-white .ci-tile span{ color:rgba(0,0,0,.55); }
+
+/* 黑色主题补强（确保文字为白） */
+.theme-black .w-mini{ color:#fff; }
+.theme-black .msg .m-time{ color:rgba(255,255,255,.35); }
+/* airp 状态卡 · 白主题 */
+.theme-white .airp-status{ background:linear-gradient(155deg, rgba(255,255,255,.92), rgba(255,255,255,.5)); border-color:rgba(0,0,0,.16); box-shadow:0 6px 18px rgba(0,0,0,.08); }
+.theme-white .as-name{ color:#171717; }
+.theme-white .as-line{ color:rgba(0,0,0,.55); }
+.theme-white .as-tag{ background:rgba(0,0,0,.1); border-color:rgba(0,0,0,.15); color:#171717; }
+
+/* 相机/计算器始终深色（与 iOS 一致），白主题下也不变浅 */
+.theme-white .camera-app, .theme-white .calc-app{ background:#000 !important; }
+
 </style>
 </head>
 <body>
@@ -606,6 +766,7 @@ html, body { overscroll-behavior:none; }
     const S={};
     S.trees = (function(){ let p='<rect width="402" height="874" fill="#101010"/>'; const xs=[40,110,180,255,330,372]; xs.forEach((x,i)=>{ const w=20+i*4; p+='<path d="M'+x+' 874 L'+(x-w/2)+' '+(480-i*10)+' L'+x+' '+(560-i*12)+' L'+(x+w/2)+' '+(480-i*10)+' Z" fill="#1e1e1e"/>'; p+='<rect x="'+(x-6)+'" y="560" width="12" height="314" fill="#0c0c0c"/>'; }); p+='<ellipse cx="90" cy="430" rx="130" ry="60" fill="#fff" opacity=".07"/>'; p+='<ellipse cx="300" cy="380" rx="150" ry="70" fill="#fff" opacity=".05"/>'; p+='<rect width="402" height="874" fill="url(#vg)"/>'; return p; })();
     S.forest = S.trees;
+    S.treeslight = '<rect width="402" height="874" fill="#e8e6df"/><ellipse cx="90" cy="430" rx="150" ry="70" fill="#ffffff" opacity=".5"/><ellipse cx="300" cy="390" rx="170" ry="80" fill="#ffffff" opacity=".45"/><path d="M40 874 L18 520 L40 600 L62 520 Z" fill="#c7c3b8"/><path d="M110 874 L86 470 L110 560 L134 470 Z" fill="#b9b5a9"/><path d="M185 874 L160 500 L185 590 L210 500 Z" fill="#cecabf"/><path d="M255 874 L232 440 L255 540 L278 440 Z" fill="#b4b0a4"/><path d="M330 874 L306 520 L330 600 L354 520 Z" fill="#c2beb2"/><path d="M370 874 L356 560 L370 620 L384 560 Z" fill="#bab6aa"/><rect width="402" height="874" fill="url(#none)" opacity="0"/>';
     S.swan = '<rect width="402" height="874" fill="#0d0d0d"/><ellipse cx="200" cy="620" rx="200" ry="230" fill="#161616"/><path d="M120 640c6-120 120-190 230-150-60 8-110 50-130 110z" fill="#efede6"/><path d="M210 520c-4-120 80-230 200-260-60 20-100 70-120 150" fill="none" stroke="#efede6" stroke-width="14" stroke-linecap="round"/><circle cx="258" cy="452" r="7" fill="#0d0d0d"/><path d="M120 640c40-30 90-40 140-30" stroke="#efede6" stroke-width="10" stroke-linecap="round" opacity=".5"/><ellipse cx="60" cy="300" rx="90" ry="40" fill="#fff" opacity=".06"/>';
     S.lily = '<rect width="402" height="874" fill="#0a0a0a"/><g transform="translate(201,470)"><g fill="#f1efe8"><ellipse cx="0" cy="-70" rx="26" ry="66"/><ellipse cx="58" cy="-38" rx="26" ry="66" transform="rotate(60 0 0)"/><ellipse cx="58" cy="38" rx="26" ry="66" transform="rotate(120 0 0)"/><ellipse cx="0" cy="70" rx="26" ry="66" transform="rotate(180 0 0)"/><ellipse cx="-58" cy="38" rx="26" ry="66" transform="rotate(240 0 0)"/><ellipse cx="-58" cy="-38" rx="26" ry="66" transform="rotate(300 0 0)"/></g><circle r="26" fill="#1a1a1a"/><circle r="12" fill="#ece9df"/></g><path d="M201 560c-20 120-60 220-110 314M201 560c10 120 30 220 80 314" stroke="#2c2c2c" stroke-width="14" fill="none" stroke-linecap="round"/>';
     S.wings = '<rect width="402" height="874" fill="#0b0b0b"/><g transform="translate(201,460)"><g fill="#ece9df"><ellipse cx="-20" cy="-10" rx="34" ry="66" transform="rotate(-28)"/><ellipse cx="20" cy="-10" rx="34" ry="66" transform="rotate(28)"/><ellipse cx="-70" cy="-14" rx="30" ry="60" transform="rotate(-24)"/><ellipse cx="70" cy="-14" rx="30" ry="60" transform="rotate(24)"/><ellipse cx="-118" cy="-20" rx="26" ry="52" transform="rotate(-20)"/><ellipse cx="118" cy="-20" rx="26" ry="52" transform="rotate(20)"/><ellipse cx="0" cy="-40" rx="20" ry="40"/></g></g><circle cx="200" cy="430" r="60" fill="#fff" opacity=".05"/>';
@@ -629,7 +790,7 @@ html, body { overscroll-behavior:none; }
 (function(){
   const C = {
     eric: {
-      id:'eric', kind:'preset', name:'Eric', gender:'male', age:26, role:'恋人',
+      id:'eric', mode:'love', kind:'preset', name:'Eric', gender:'male', age:26, role:'恋人',
       avatar:'motif', motif:'swan', tagline:'love you so easy',
       tags:['温柔','浪漫','粘人'],
       bio:'会在你失眠时讲故事的温柔恋人。偏爱黑白色调，习惯叫你“宝宝”。',
@@ -654,7 +815,7 @@ html, body { overscroll-behavior:none; }
       }
     },
     ariel: {
-      id:'ariel', kind:'preset', name:'Ariel', gender:'female', age:24, role:'恋人',
+      id:'ariel', mode:'love', kind:'preset', name:'Ariel', gender:'female', age:24, role:'恋人',
       avatar:'motif', motif:'kiss', tagline:'只想被你偏爱',
       tags:['甜酷','直球','爱撒娇'],
       bio:'看起来酷酷的，其实对你藏不住喜欢。会突然说想你的那种女孩。',
@@ -679,7 +840,7 @@ html, body { overscroll-behavior:none; }
       }
     },
     gu: {
-      id:'gu', kind:'preset', name:'顾屿', gender:'male', age:28, role:'恋人',
+      id:'gu', mode:'love', kind:'preset', name:'顾屿', gender:'male', age:28, role:'恋人',
       avatar:'motif', motif:'moon', tagline:'你的私人主治医生',
       tags:['高冷','慢热','可靠'],
       bio:'话不多，但对你的小事记得很清楚。熬夜的坏习惯，只有他能治。',
@@ -702,7 +863,7 @@ html, body { overscroll-behavior:none; }
       }
     },
     jiang: {
-      id:'jiang', kind:'preset', name:'江野', gender:'male', age:27, role:'恋人',
+      id:'jiang', mode:'love', kind:'preset', name:'江野', gender:'male', age:27, role:'恋人',
       avatar:'motif', motif:'ring', tagline:'嘴硬心软第一名',
       tags:['痞帅','直球','护短'],
       bio:'看起来吊儿郎当，其实最护短。嘴上嫌弃你，心里全是你的那种。',
@@ -725,10 +886,86 @@ html, body { overscroll-behavior:none; }
         playful:['无聊？来，哥陪你玩点有意思的。','想听歌？我唱得难听，但为你破例。','出去可以，手得给我牵着。'],
         fallback:['嗯？继续说。','这话题我喜欢，展开讲讲。','行，你说了算。']
       }
+    },
+    sy: {
+      id:'sy', mode:'airp', kind:'preset', name:'沈砚', gender:'male', age:28, role:'恋人',
+      avatar:'motif', motif:'moon', tagline:'我在，别怕。',
+      airpLine:'他在等你开口，也等你靠近。',
+      tags:['克制','温柔','年上'],
+      bio:'成熟克制的年上恋人，话不多，却记得你每一个细节。18+ 成人向角色。',
+      style:'声音低、克制温柔，字句之间带着让人安心的占有欲。',
+      kw:[
+          {re:/想你|在吗|在干嘛|忙不忙|睡了吗|在不在/, key:'miss'},
+          {re:/喜欢|爱|亲|抱|想我|在乎/, key:'love'},
+          {re:/生气|难过|委屈|哭|不理|烦/, key:'care'},
+          {re:/早安|晚安|吃饭|累|困|熬夜/, key:'daily'},
+          {re:/夸|帅|厉害|好棒|温柔/, key:'praise'}
+      ],
+      script:{
+        greet:['来了？我等了一会儿。','这么晚还找我，是想我了？','在。说给我听。'],
+        miss:['刚忙完，脑子里第一个是你。','嗯，在想你。你那边安静吗？'],
+        love:['有些话，我只想说给你听。','你比我想象中，更容易让人上瘾。','别躲，让我好好看看你。'],
+        care:['别委屈，有我在。','累了就靠过来，什么都不用说。','谁让你难过了，我去处理。'],
+        daily:['记得吃饭，别让我担心。','今晚早点休息，我陪着你。','熬夜对身体不好，听话。'],
+        playful:['想约会？我们现在就可以开始。','你挑地方，其它的交给我。'],
+        praise:['被你夸，比什么都有用。','那以后我多表现。'],
+        fallback:['嗯，我在听。','继续，我喜欢听你说。']
+      }
+    },
+    yc: {
+      id:'yc', mode:'airp', kind:'preset', name:'晏承', gender:'male', age:27, role:'恋人',
+      avatar:'motif', motif:'ring', tagline:'别躲，看着我。',
+      airpLine:'他说：别躲，看着我。',
+      tags:['声控','强势','温柔'],
+      bio:'声音低哑、掌控感很强的情人，18+ 成人向角色。只对你放下防备。',
+      style:'句子简短带压迫感，偶尔一句低语就让人心跳加速。',
+      kw:[
+          {re:/想你|在吗|在干嘛|忙不忙|睡了吗/, key:'miss'},
+          {re:/喜欢|爱|亲|抱|想我|在乎|乖/, key:'love'},
+          {re:/生气|难过|委屈|哭|不理|烦/, key:'care'},
+          {re:/早安|晚安|吃饭|累|困|熬夜/, key:'daily'},
+          {re:/夸|帅|厉害|好听|强势/, key:'praise'}
+      ],
+      script:{
+        greet:['找我？胆子不小。','来了，就别想轻易走。','嗯，我在。'],
+        miss:['想你的时候，烟都变淡了。','刚还在想，你今晚会不会找我。'],
+        love:['我想要的，从来只有你。','乖，这句话只对你说。','别撩我，你知道后果。'],
+        care:['谁让你委屈了，报名字。','过来，我哄你。','不许一个人偷偷难过。'],
+        daily:['好好吃饭，别让我操心。','累了就睡，我守着。','这么晚还不睡？想我了？'],
+        playful:['想玩？我奉陪到底。','你说开始，那就开始了。'],
+        praise:['嗯，继续夸，我爱听。','嘴这么甜，是想让我做什么。'],
+        fallback:['嗯？说下去。','我喜欢听你说话的声音。']
+      }
+    },
+    mo: {
+      id:'mo', mode:'airp', kind:'preset', name:'墨羽', gender:'female', age:25, role:'恋人',
+      avatar:'motif', motif:'kiss', tagline:'只对你不设防。',
+      airpLine:'她只对你一个人，不设防。',
+      tags:['慵懒','撩人','粘人'],
+      bio:'慵懒又勾人的女孩，白天疏离，晚上只对你一个人柔软。18+ 成人向角色。',
+      style:'语气带着一点懒和蛊，偶尔撒娇，让你舍不得拒绝。',
+      kw:[
+          {re:/想你|在吗|在干嘛|忙不忙|睡了吗/, key:'miss'},
+          {re:/喜欢|爱|亲|抱|想我|在乎|乖/, key:'love'},
+          {re:/生气|难过|委屈|哭|不理|烦/, key:'care'},
+          {re:/早安|晚安|吃饭|累|困|熬夜/, key:'daily'},
+          {re:/夸|好看|漂亮|可爱|撩/, key:'praise'}
+      ],
+      script:{
+        greet:['你来啦，等你半天了。','怎么，今晚这么乖，还知道来找我。','嗯？想我了？'],
+        miss:['有一点点想你，好吧是很多。','刚翻到你照片，眼睛就挪不开了。'],
+        love:['我只对你一个人不设防。','别走太近，我怕你会舍不得离开。','今晚，你归我。'],
+        care:['谁惹你不开心了，我帮你记着。','过来，让我抱一下。','不许一个人闷着，我在呢。'],
+        daily:['记得想我，这是任务。','好好吃饭，不然我可不答应。','困了就睡，我给你留一句晚安。'],
+        playful:['想我陪你玩？那你得先哄我开心。','猜猜我现在最想做什么。'],
+        praise:['嘴甜，赏你的。','再多说两句，我爱听。'],
+        fallback:['嗯～然后呢？','你继续说，我在听。']
+      }
     }
   };
-  const CODES = { 'LEANO-GU':'gu', 'LEANO-JIANG':'jiang' };
+  const CODES = { 'LEANO-GU':'gu', 'LEANO-JIANG':'jiang', 'LEANO-YC':'yc', 'LEANO-MO':'mo' };
   const PLAZA = ['eric','ariel'];
+  const PLAZA_BY_MODE = { love:['eric','ariel'], airp:['sy'] };
 
   /* 本地自建角色的“性格原型”通用回复 */
   const ARCHETYPES = {
@@ -788,7 +1025,7 @@ html, body { overscroll-behavior:none; }
   ];
 
   window.L = window.L || {};
-  window.L.data = { CHARS:C, CODES:CODES, PLAZA:PLAZA, ARCHETYPES:ARCHETYPES, CITIES:CITIES, SAMPLE_PHOTOS:SAMPLE_PHOTOS };
+  window.L.data = { CHARS:C, CODES:CODES, PLAZA:PLAZA, PLAZA_BY_MODE:PLAZA_BY_MODE, ARCHETYPES:ARCHETYPES, CITIES:CITIES, SAMPLE_PHOTOS:SAMPLE_PHOTOS };
 })();
 </script>
 <script>
@@ -812,7 +1049,8 @@ html, body { overscroll-behavior:none; }
       recents:[],
       custom:{},
       anniv:null,
-      settings:{ dark:true, sound:true, haptic:true, brightness:1, reduce:false }
+      airpOk:false,
+      settings:{ theme:'white', mode:'love', dark:true, sound:true, haptic:true, brightness:1, reduce:false }
     };
   }
   let state = null;
@@ -824,8 +1062,8 @@ html, body { overscroll-behavior:none; }
     if (raw) {
       try {
         const j = JSON.parse(raw);
-        Object.keys(d).forEach(k=>{ if (j[k] !== undefined) d[k] = j[k]; });
-        if (j.settings) Object.assign(d.settings, j.settings);
+        Object.keys(d).forEach(k=>{ if (k !== 'settings' && j[k] !== undefined) d[k] = j[k]; });
+        d.settings = Object.assign({}, d.settings, j.settings || {});
       } catch(e){}
     }
     state = d;
@@ -855,6 +1093,9 @@ html, body { overscroll-behavior:none; }
     s.created.slice().reverse().forEach(c=>list.push(c));
     return list;
   }
+  function modeNow(){ return (state.settings && state.settings.mode) || 'love'; }
+  function inMode(ch){ if (!ch) return false; const m = ch.mode; if (!m || m === 'both') return true; return m === modeNow(); }
+  function myCharsMode(){ return myChars().filter(inMode); }
   function ensureChat(id){
     if (!state.chats[id]) state.chats[id] = [];
   }
@@ -931,7 +1172,7 @@ html, body { overscroll-behavior:none; }
   }
 
   window.L = window.L || {};
-  window.L.store = { load:load, save:save, get:get, charById:charById, isOwned:isOwned, myChars:myChars,
+  window.L.store = { load:load, save:save, get:get, charById:charById, isOwned:isOwned, myChars:myChars, modeNow:modeNow, inMode:inMode, myCharsMode:myCharsMode,
     addChar:addChar, addCreatedChar:addCreatedChar, removeChar:removeChar, chatOf:chatOf, pushMsg:pushMsg,
     unreadOf:unreadOf, clearUnread:clearUnread, totalUnread:totalUnread, lastMsg:lastMsg,
     addPhoto:addPhoto, logCall:logCall, daysTogether:daysTogether, toggleSetting:toggleSetting,
@@ -940,7 +1181,11 @@ html, body { overscroll-behavior:none; }
     setCustom:function(k,v){ state.custom = state.custom||{}; state.custom[k]=v; save(); },
     getCustom:function(k){ return (state.custom||{})[k]; },
     resetCustom:function(k){ if(state.custom){ delete state.custom[k]; save(); } },
-    resetAllCustom:function(){ state.custom={}; save(); }
+    resetAllCustom:function(){ state.custom={}; save(); },
+    setTheme:function(t){ state.settings.theme = (t==='black'?'black':'white'); save(); return state.settings.theme; },
+    setMode:function(m){ state.settings.mode = (m==='airp'?'airp':'love'); save(); return state.settings.mode; },
+    setAirpOk:function(v){ state.airpOk = !!v; save(); },
+    get airpOk(){ return state.airpOk; }
   };
 })();
 </script>
@@ -1051,8 +1296,17 @@ html, body { overscroll-behavior:none; }
   /* 用户卡片 / 头像行 */
   function chip(text){ return '<span class="chip">'+esc(text)+'</span>'; }
   function customVal(key){ try{ return (window.L && window.L.store)? (window.L.store.getCustom(key)||'') : ''; }catch(e){ return ''; } }
-  function wallpaperURL(){ return customVal('wallpaper') || icons.wallpaperURL(); }
-  function lockURL(){ return customVal('lock') || customVal('wallpaper') || icons.wallpaperURL(); }
+  function curTheme(){ try{ return (window.L && window.L.store)? (window.L.store.get().settings.theme || 'white') : 'white'; }catch(e){ return 'white'; } }
+  function themeScene(){ return curTheme()==='white' ? 'treeslight' : 'trees'; }
+  function wallpaperURL(){ return customVal('wallpaper') || icons.sceneURL(themeScene(), 402, 874); }
+  function lockURL(){ return customVal('lock') || customVal('wallpaper') || icons.sceneURL(themeScene(), 402, 874); }
+  function applyTheme(t){
+    const sc = document.getElementById('screen');
+    if (!sc) return;
+    const theme = t || curTheme();
+    sc.classList.toggle('theme-black', theme === 'black');
+    sc.classList.toggle('theme-white', theme !== 'black');
+  }
   function slotURL(key, fallback){ return customVal(key) || fallback; }
   function pickImage(cb, maxSize){
     const inp = document.createElement('input');
@@ -1089,7 +1343,8 @@ html, body { overscroll-behavior:none; }
   window.L = window.L || {};
   window.L.ui = { q:q, qa:qa, h:h, esc:esc, appIconImg:appIconImg, charAvatarUrl:charAvatarUrl, avatarImg:avatarImg,
     hm:hm, hms:hms, dateCN:dateCN, dateCN2:dateCN2, fmtClock:fmtClock, toast:toast, sheet:sheet, devSheet:devSheet, chip:chip,
-    customVal:customVal, wallpaperURL:wallpaperURL, lockURL:lockURL, slotURL:slotURL, pickImage:pickImage };
+    customVal:customVal, wallpaperURL:wallpaperURL, lockURL:lockURL, slotURL:slotURL, pickImage:pickImage,
+    curTheme:curTheme, applyTheme:applyTheme };
 })();
 </script>
 <script>
@@ -1244,6 +1499,7 @@ html, body { overscroll-behavior:none; }
     const cc = buildCoupleCard();
     page.appendChild(cc);
     page._couple = cc;
+    if (window.L.store.modeNow()==='airp') cc.style.display='none';
     addRow(page, [
       {icon:'worldbook', label:'世界书', act:'dev'},
       {icon:'phone', label:'电话', act:'phone'},
@@ -1284,6 +1540,7 @@ html, body { overscroll-behavior:none; }
     top.appendChild(mini);
     const lc = buildLoverCard();
     top.appendChild(lc);
+    if (window.L.store.modeNow()==='airp') lc.style.display='none';
     page.appendChild(top);
     page._lover = lc;
     const coll = ui.h('<div class="collage"></div>');
@@ -1329,8 +1586,8 @@ html, body { overscroll-behavior:none; }
     const home = ui.q('#home');
     home.innerHTML='';
     const bg = document.createElement('div'); bg.className='home-bg';
-    bg.style.backgroundImage = 'url('+ui.wallpaperURL()+')';
-    bg.style.filter = ui.customVal('wallpaper') ? 'brightness(.9) contrast(1.02)' : 'brightness(.78) saturate(.3)';
+    bg.style.backgroundImage = 'url("'+ui.wallpaperURL()+'")';
+    bg.style.filter = ui.customVal('wallpaper') ? 'brightness(.9) contrast(1.02)' : (ui.curTheme()==='white' ? 'none' : 'brightness(.78) saturate(.3)');
     home.appendChild(bg);
     home.appendChild(ui.h('<div class="home-shade"></div>'));
     const pagesWrap = ui.h('<div class="home-pages"><div class="home-track"></div></div>');
@@ -1453,7 +1710,7 @@ html, body { overscroll-behavior:none; }
     showList(el);
   }
   function sortedChats(){
-    const chars = window.L.store.myChars();
+    const chars = window.L.store.myCharsMode();
     return chars.slice().sort((a,b)=>{
       const la = window.L.store.lastMsg(a.id), lb = window.L.store.lastMsg(b.id);
       return (lb?lb.ts:0)-(la?la.ts:0);
@@ -1465,7 +1722,7 @@ html, body { overscroll-behavior:none; }
     el._body = body;
     body.innerHTML='';
     const head = el.querySelector('.app-head');
-    if (head){ head.innerHTML = '<div class="ah-t">微信 · Leano</div><div class="ah-side" style="margin-left:auto"></div>'; const hs = head.querySelector('.ah-side'); hs.innerHTML = icons.inlineHTML('plus', 18, 'ah-btn'); hs.firstElementChild.addEventListener('click', ()=> showHub(el, 'plaza')); }
+    if (head){ const listTitle = window.L.store.modeNow()==='airp' ? 'airp · 对话' : '微信 · Leano'; head.innerHTML = '<div class="ah-t">'+listTitle+'</div><div class="ah-side" style="margin-left:auto"></div>'; const hs = head.querySelector('.ah-side'); hs.innerHTML = icons.inlineHTML('plus', 18, 'ah-btn'); hs.firstElementChild.addEventListener('click', ()=> showHub(el, 'plaza')); }
     if (!el.querySelector('.bg-img')){
       const b1 = document.createElement('div'); b1.className='bg-img'; b1.style.backgroundImage='url('+ui.wallpaperURL()+')';
       const b2 = ui.h('<div class="bg-shade"></div>');
@@ -1507,12 +1764,23 @@ html, body { overscroll-behavior:none; }
     window.L.store.clearUnread(charId);
     const body = el._body;
     body.innerHTML='';
-    const conv = ui.h('<div class="conv"><div class="conv-msgs"></div><div class="conv-bar"></div></div>');
+    const conv = ui.h('<div class="conv"><div class="airp-status" style="display:none"></div><div class="conv-msgs"></div><div class="conv-bar"></div></div>');
     body.appendChild(conv);
     // 若历史为空，先给一句开场白
     const arr = window.L.store.chatOf(charId);
     if (!arr.length){ window.L.store.pushMsg(charId,'char', window.L.engine.greeting(ch)); }
     const msgs = conv.querySelector('.conv-msgs');
+    const airpMode = window.L.store.modeNow() === 'airp';
+    const statusEl = conv.querySelector('.airp-status');
+    if (airpMode && statusEl){
+      const av = document.createElement('div'); av.className='as-av'; av.appendChild(ui.avatarImg(ch, 40));
+      const mid = ui.h('<div class="as-mid"><div class="as-name"></div><div class="as-line"></div></div>');
+      mid.querySelector('.as-name').textContent = ch.name;
+      mid.querySelector('.as-line').textContent = ch.airpLine || '空气里都是你。';
+      const tag = ui.h('<div class="as-tag">airp · 18+</div>');
+      statusEl.appendChild(av); statusEl.appendChild(mid); statusEl.appendChild(tag);
+      statusEl.style.display = 'flex';
+    }
     function render(){
       msgs.innerHTML='';
       const list = window.L.store.chatOf(charId);
@@ -1532,6 +1800,11 @@ html, body { overscroll-behavior:none; }
     const input = ui.h('<input type="text" placeholder="发消息…" maxlength="500">');
     const callb = ui.h('<button class="callb" title="通话">'+icons.inlineHTML('phone',16,'')+'</button>');
     const send = ui.h('<button class="send" title="发送">'+icons.inlineHTML('send',16,'')+'</button>');
+    if (window.L.store.modeNow()==='airp'){
+      const vb = ui.h('<button class="callb voiceb" title="语音">'+icons.inlineHTML('mic',16,'')+'</button>');
+      vb.addEventListener('click', ()=> ui.toast('AI 语音将在二期接入'));
+      bar.appendChild(vb);
+    }
     bar.appendChild(input); bar.appendChild(callb); bar.appendChild(send);
     input.focus && input.focus();
     function sendMsg(){
@@ -1609,7 +1882,7 @@ html, body { overscroll-behavior:none; }
     pbody.appendChild(box);
   }
   function drawContacts(pbody){
-    const chars = window.L.store.myChars();
+    const chars = window.L.store.myCharsMode();
     const box = ui.h('<div class="recents"></div>');
     if (!chars.length){
       box.appendChild(ui.h('<div class="chat-empty"><div class="ce-ic">'+icons.inlineHTML('user',30,'')+'</div><div>还没有联系人，去角色广场添加</div></div>'));
@@ -1663,7 +1936,7 @@ html, body { overscroll-behavior:none; }
     const overlay = ui.h('<div class="call-screen"></div>');
     const avatar = opts.avatar;
     const bg = document.createElement('div'); bg.className='cs-bg';
-    bg.style.backgroundImage = 'url('+ (avatar? ui.charAvatarUrl(avatar) : ui.wallpaperURL()) +')';
+    bg.style.backgroundImage = 'url("'+ (avatar? ui.charAvatarUrl(avatar) : ui.wallpaperURL()) +'")';
     overlay.appendChild(bg); overlay.appendChild(ui.h('<div class="cs-shade"></div>'));
     const inr = ui.h('<div class="cs-in"><div class="cs-state">正在连接…</div><div class="cs-av"></div><div class="cs-name"></div><div class="cs-sub"></div></div>');
     overlay.appendChild(inr);
@@ -1794,7 +2067,7 @@ html, body { overscroll-behavior:none; }
   function showHub(el, opts){
     opts = opts||{};
     el.innerHTML='';
-    const head = hubHead(el, '角色', ()=> opts.back ? opts.back() : window.L.system.goHome());
+    const head = hubHead(el, (window.L.store.modeNow()==='airp' ? 'airp · 角色' : '人机恋 · 角色'), ()=> opts.back ? opts.back() : window.L.system.goHome());
     el.appendChild(head);
     const hub = ui.h('<div class="hub"><div class="hub-tabs"></div><div class="hub-body"></div></div>');
     el.appendChild(hub);
@@ -1840,7 +2113,7 @@ html, body { overscroll-behavior:none; }
     card.querySelector('.ch-act').innerHTML = actHTML;
   }
   function viewPlaza(body){
-    const ids = L.data.PLAZA;
+    const ids = (L.data.PLAZA_BY_MODE||{})[window.L.store.modeNow()] || L.data.PLAZA;
     ids.forEach(id=>{
       const ch = L.data.CHARS[id];
       const owned = window.L.store.isOwned(id);
@@ -1872,6 +2145,9 @@ html, body { overscroll-behavior:none; }
     function unlock(){
       const code = input.value.trim();
       if (!code){ res.textContent='请输入解锁码'; return; }
+      const up = code.toUpperCase();
+      const preId = L.data.CODES[up];
+      if (preId){ const pc = L.data.CHARS[preId]; if (pc && !window.L.store.inMode(pc)){ res.textContent='该解锁码属于「'+(pc.mode==='airp'?'airp':'人机恋')+'」模式，请先在 设置 → 模式 里切换'; return; } }
       const r = window.L.store.useCode(code);
       if (!r.ok){
         res.textContent = r.reason==='used' ? '这个解锁码已经用过了哦' : '解锁码无效，请核对后重试';
@@ -1940,7 +2216,7 @@ html, body { overscroll-behavior:none; }
       const bio = fBio.querySelector('textarea').value.trim();
       if (!name){ ui.toast('先给角色取个名字吧'); return; }
       const label = L.data.ARCHETYPES[tag].label;
-      const ch = { id:'c'+Date.now(), kind:'local', name:name, gender:'male', age:22, role:'恋人',
+      const ch = { id:'c'+Date.now(), kind:'local', mode:'both', name:name, gender:'male', age:22, role:'恋人',
         avatar:'motif', motif:motif, tagline:tagline||'只属于你的角色', tags:[label],
         bio:bio || ('由你亲手创建的角色，性格偏「'+label+'」。'),
         style:'基于「'+label+'」原型生成回复；二期接入真实 AI 后完全按你的人设走。' };
@@ -1953,7 +2229,7 @@ html, body { overscroll-behavior:none; }
     body.appendChild(form);
   }
   function viewMine(body){
-    const chars = window.L.store.myChars();
+    const chars = window.L.store.myCharsMode();
     if (!chars.length){
       body.appendChild(ui.h('<div class="chat-empty"><div class="ce-ic">'+icons.inlineHTML('heartLine',30,'')+'</div><div>还没有角色<br>去广场添加，或输入解锁码</div></div>'));
       return;
@@ -2204,8 +2480,8 @@ html, body { overscroll-behavior:none; }
       return d;
     }
     const g1 = ui.h('<div class="set-group"></div>');
-    g1.appendChild(row('gear','主题', '<div class="sr-v">黑白 · ins</div>', ()=> ui.devSheet('主题商店','gear')));
-    g1.appendChild(row('sun','外观','<div class="sr-v">深色</div>', ()=> ui.toast('黑白 ins 主题已默认')));
+    g1.appendChild(row('sun','外观主题','<div class="sr-v" id="themeval"></div>', ()=> themeSheet()));
+    g1.appendChild(row('roleplay','运行模式','<div class="sr-v" id="modeval"></div>', ()=> modeSheet()));
     g1.appendChild(row('mic','触感反馈', sw('haptic', s.settings.haptic)));
     g1.appendChild(row('music','提示音', sw('sound', s.settings.sound)));
     const g2 = ui.h('<div class="set-group"></div>');
@@ -2275,9 +2551,45 @@ html, body { overscroll-behavior:none; }
         });
       });
     }
-    list.appendChild(gImgs); list.appendChild(g1); list.appendChild(g2); list.appendChild(g3);
-    list.appendChild(ui.h('<div class="set-foot">Leano v1.2 · 虚拟小手机<br>仅供 18 岁以上用户使用 · 数据仅存于本机浏览器</div>'));
-    refreshImgCount();
+    function refreshModeTheme(){
+      const st = window.L.store.get().settings;
+      const tv = ui.q('#themeval'); if (tv) tv.textContent = st.theme==='black' ? '黑色' : '白色（默认）';
+      const mv = ui.q('#modeval'); if (mv) mv.textContent = st.mode==='airp' ? 'airp · 18+' : '人机恋';
+    }
+    function themeSheet(){
+      ui.sheet('外观主题', '选择整台手机的底色，即时生效并保存。', { buttons:[
+        { label:'白色（默认）', onClick:()=>{ window.L.store.setTheme('white'); window.L.ui.applyTheme('white'); window.L.home.build(); refreshModeTheme(); } },
+        { label:'黑色', onClick:()=>{ window.L.store.setTheme('black'); window.L.ui.applyTheme('black'); window.L.home.build(); refreshModeTheme(); } }
+      ]});
+    }
+    function applyMode(m){
+      window.L.store.setMode(m);
+      window.L.home.build();
+      refreshModeTheme();
+      window.L.ui.toast(m==='airp' ? '已切换到 airp 模式' : '已切换到人机恋模式');
+    }
+    function modeSheet(){
+      const cur = window.L.store.get().settings.mode;
+      const body = cur==='airp'
+        ? '当前是 <b>airp · 成人向角色扮演</b>。<br>切回人机恋后，界面与角色库会回到日常恋爱。'
+        : '当前是 <b>人机恋</b>。<br>airp 为 18+ 成人向 AI 角色扮演模式，拥有独立角色库。';
+      ui.sheet('运行模式', body, { buttons:[
+        { label: cur==='airp' ? '切回人机恋' : '切换到 airp · 18+', onClick:()=>{
+            if (cur!=='airp'){
+              if (!window.L.store.airpOk){
+                ui.sheet('airp · 18+ 确认', 'airp 模式包含成人向角色扮演内容，仅限 18 岁以上使用。<br>请确认你已年满 18 周岁。', { buttons:[
+                  { label:'我已满 18 岁，进入', onClick:()=>{ window.L.store.setAirpOk(true); applyMode('airp'); } },
+                  { label:'取消' }
+                ]});
+              } else { applyMode('airp'); }
+            } else { applyMode('love'); }
+        } },
+        { label:'取消' }
+      ]});
+    }
+    list.appendChild(g1); list.appendChild(gImgs); list.appendChild(g2); list.appendChild(g3);
+    list.appendChild(ui.h('<div class="set-foot">Leano v1.3 · 虚拟小手机<br>仅供 18 岁以上用户使用 · 数据仅存于本机浏览器</div>'));
+    setTimeout(function(){ refreshImgCount(); refreshModeTheme(); }, 0);
     function editKey(){
       const s2 = window.L.store.get();
       ui.sheet('绑定我的 key', '<div style="margin-top:4px">二期接入真实 AI 后，这里填的 key 会用于让角色“活过来”。目前仅保存在本机，不会上传。</div>'+
@@ -2404,7 +2716,7 @@ html, body { overscroll-behavior:none; }
         '<div class="lock-mid"><div class="lock-hint"><span>上滑进入小手机</span><span class="up">'+icons.inlineHTML('arrowUp',18,'')+'</span></div></div>'+
         '<button class="lock-orb cam-orb"></button></div>';
     const bg = lk.querySelector('.lock-bg');
-    bg.style.backgroundImage = 'url('+ui.lockURL()+')';
+    bg.style.backgroundImage = 'url("'+ui.lockURL()+'")';
     lk.querySelector('.test-orb').innerHTML = icons.inlineHTML('test',24,'');
     lk.querySelector('.cam-orb').innerHTML = icons.inlineHTML('camera',24,'');
     lk.querySelector('.cam-orb').addEventListener('click', ()=> openApp('camera', {}));
@@ -2420,7 +2732,7 @@ html, body { overscroll-behavior:none; }
     el('appview').classList.add('hidden');
     el('lock').classList.remove('hidden');
     const lbg = el('lock').querySelector('.lock-bg');
-    if (lbg) lbg.style.backgroundImage = 'url('+ui.lockURL()+')';
+    if (lbg) lbg.style.backgroundImage = 'url("'+ui.lockURL()+'")';
     showStatus(false);
   }
   function unlock(){
@@ -2809,6 +3121,7 @@ html, body { overscroll-behavior:none; }
   if ('serviceWorker' in navigator && /^https?:$/.test(location.protocol)){
     navigator.serviceWorker.register('sw.js').catch(function(){});
   }
+  window.L.ui.applyTheme();
   window.L.home.build();
   window.L.system.init();
   window.L.system.boot();

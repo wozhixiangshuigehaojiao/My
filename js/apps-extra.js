@@ -14,7 +14,7 @@
   function showHub(el, opts){
     opts = opts||{};
     el.innerHTML='';
-    const head = hubHead(el, '角色', ()=> opts.back ? opts.back() : window.L.system.goHome());
+    const head = hubHead(el, (window.L.store.modeNow()==='airp' ? 'airp · 角色' : '人机恋 · 角色'), ()=> opts.back ? opts.back() : window.L.system.goHome());
     el.appendChild(head);
     const hub = ui.h('<div class="hub"><div class="hub-tabs"></div><div class="hub-body"></div></div>');
     el.appendChild(hub);
@@ -60,7 +60,7 @@
     card.querySelector('.ch-act').innerHTML = actHTML;
   }
   function viewPlaza(body){
-    const ids = L.data.PLAZA;
+    const ids = (L.data.PLAZA_BY_MODE||{})[window.L.store.modeNow()] || L.data.PLAZA;
     ids.forEach(id=>{
       const ch = L.data.CHARS[id];
       const owned = window.L.store.isOwned(id);
@@ -92,6 +92,9 @@
     function unlock(){
       const code = input.value.trim();
       if (!code){ res.textContent='请输入解锁码'; return; }
+      const up = code.toUpperCase();
+      const preId = L.data.CODES[up];
+      if (preId){ const pc = L.data.CHARS[preId]; if (pc && !window.L.store.inMode(pc)){ res.textContent='该解锁码属于「'+(pc.mode==='airp'?'airp':'人机恋')+'」模式，请先在 设置 → 模式 里切换'; return; } }
       const r = window.L.store.useCode(code);
       if (!r.ok){
         res.textContent = r.reason==='used' ? '这个解锁码已经用过了哦' : '解锁码无效，请核对后重试';
@@ -160,7 +163,7 @@
       const bio = fBio.querySelector('textarea').value.trim();
       if (!name){ ui.toast('先给角色取个名字吧'); return; }
       const label = L.data.ARCHETYPES[tag].label;
-      const ch = { id:'c'+Date.now(), kind:'local', name:name, gender:'male', age:22, role:'恋人',
+      const ch = { id:'c'+Date.now(), kind:'local', mode:'both', name:name, gender:'male', age:22, role:'恋人',
         avatar:'motif', motif:motif, tagline:tagline||'只属于你的角色', tags:[label],
         bio:bio || ('由你亲手创建的角色，性格偏「'+label+'」。'),
         style:'基于「'+label+'」原型生成回复；二期接入真实 AI 后完全按你的人设走。' };
@@ -173,7 +176,7 @@
     body.appendChild(form);
   }
   function viewMine(body){
-    const chars = window.L.store.myChars();
+    const chars = window.L.store.myCharsMode();
     if (!chars.length){
       body.appendChild(ui.h('<div class="chat-empty"><div class="ce-ic">'+icons.inlineHTML('heartLine',30,'')+'</div><div>还没有角色<br>去广场添加，或输入解锁码</div></div>'));
       return;
@@ -424,8 +427,8 @@
       return d;
     }
     const g1 = ui.h('<div class="set-group"></div>');
-    g1.appendChild(row('gear','主题', '<div class="sr-v">黑白 · ins</div>', ()=> ui.devSheet('主题商店','gear')));
-    g1.appendChild(row('sun','外观','<div class="sr-v">深色</div>', ()=> ui.toast('黑白 ins 主题已默认')));
+    g1.appendChild(row('sun','外观主题','<div class="sr-v" id="themeval"></div>', ()=> themeSheet()));
+    g1.appendChild(row('roleplay','运行模式','<div class="sr-v" id="modeval"></div>', ()=> modeSheet()));
     g1.appendChild(row('mic','触感反馈', sw('haptic', s.settings.haptic)));
     g1.appendChild(row('music','提示音', sw('sound', s.settings.sound)));
     const g2 = ui.h('<div class="set-group"></div>');
@@ -495,9 +498,45 @@
         });
       });
     }
-    list.appendChild(gImgs); list.appendChild(g1); list.appendChild(g2); list.appendChild(g3);
-    list.appendChild(ui.h('<div class="set-foot">Leano v1.2 · 虚拟小手机<br>仅供 18 岁以上用户使用 · 数据仅存于本机浏览器</div>'));
-    refreshImgCount();
+    function refreshModeTheme(){
+      const st = window.L.store.get().settings;
+      const tv = ui.q('#themeval'); if (tv) tv.textContent = st.theme==='black' ? '黑色' : '白色（默认）';
+      const mv = ui.q('#modeval'); if (mv) mv.textContent = st.mode==='airp' ? 'airp · 18+' : '人机恋';
+    }
+    function themeSheet(){
+      ui.sheet('外观主题', '选择整台手机的底色，即时生效并保存。', { buttons:[
+        { label:'白色（默认）', onClick:()=>{ window.L.store.setTheme('white'); window.L.ui.applyTheme('white'); window.L.home.build(); refreshModeTheme(); } },
+        { label:'黑色', onClick:()=>{ window.L.store.setTheme('black'); window.L.ui.applyTheme('black'); window.L.home.build(); refreshModeTheme(); } }
+      ]});
+    }
+    function applyMode(m){
+      window.L.store.setMode(m);
+      window.L.home.build();
+      refreshModeTheme();
+      window.L.ui.toast(m==='airp' ? '已切换到 airp 模式' : '已切换到人机恋模式');
+    }
+    function modeSheet(){
+      const cur = window.L.store.get().settings.mode;
+      const body = cur==='airp'
+        ? '当前是 <b>airp · 成人向角色扮演</b>。<br>切回人机恋后，界面与角色库会回到日常恋爱。'
+        : '当前是 <b>人机恋</b>。<br>airp 为 18+ 成人向 AI 角色扮演模式，拥有独立角色库。';
+      ui.sheet('运行模式', body, { buttons:[
+        { label: cur==='airp' ? '切回人机恋' : '切换到 airp · 18+', onClick:()=>{
+            if (cur!=='airp'){
+              if (!window.L.store.airpOk){
+                ui.sheet('airp · 18+ 确认', 'airp 模式包含成人向角色扮演内容，仅限 18 岁以上使用。<br>请确认你已年满 18 周岁。', { buttons:[
+                  { label:'我已满 18 岁，进入', onClick:()=>{ window.L.store.setAirpOk(true); applyMode('airp'); } },
+                  { label:'取消' }
+                ]});
+              } else { applyMode('airp'); }
+            } else { applyMode('love'); }
+        } },
+        { label:'取消' }
+      ]});
+    }
+    list.appendChild(g1); list.appendChild(gImgs); list.appendChild(g2); list.appendChild(g3);
+    list.appendChild(ui.h('<div class="set-foot">Leano v1.3 · 虚拟小手机<br>仅供 18 岁以上用户使用 · 数据仅存于本机浏览器</div>'));
+    setTimeout(function(){ refreshImgCount(); refreshModeTheme(); }, 0);
     function editKey(){
       const s2 = window.L.store.get();
       ui.sheet('绑定我的 key', '<div style="margin-top:4px">二期接入真实 AI 后，这里填的 key 会用于让角色“活过来”。目前仅保存在本机，不会上传。</div>'+
