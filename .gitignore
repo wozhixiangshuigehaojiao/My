@@ -1,0 +1,11 @@
+node_modules/
+.env
+参考图/
+预览/
+发布暂存/
+Leano-网页版.zip
+*.log
+.DS_Store
+Thumbs.db
+tools/git/
+tools/.git-credentials
